@@ -5,7 +5,7 @@
 using namespace std;
 
 constexpr auto PI = 3.14;
-GLuint index = -1;
+GLuint index1 = -1;
 
 float theta = 0,phi=0;
 float camX = 0, camY =0, camZ = 10;
@@ -111,7 +111,7 @@ void timerCallBack() {
     srand(time(0));
 
 
-    if (index != 2)
+    if (index1 != 2)
     {
         sphx = sphx + mulX * ((double)rand() / (RAND_MAX)) / 50;
         sphy = sphy + mulX * ((double)rand() / (RAND_MAX)) / 50;
@@ -119,7 +119,7 @@ void timerCallBack() {
         //sphrot += ((double)rand() / (RAND_MAX))*3;
     }
 
-    if (index != 1)
+    if (index1 != 1)
     {
         pyrx = pyrx + mulY * ((double)rand() / (RAND_MAX)) / 50;
         pyry = pyry + mulY * ((double)rand() / (RAND_MAX)) / 50;
@@ -127,7 +127,7 @@ void timerCallBack() {
         //pyrrot += ((double)rand() / (RAND_MAX)) * 3;
     }
 
-    if (index != 3)
+    if (index1 != 3)
     {
         hexpx = hexpx + mulZ * ((double)rand() / (RAND_MAX)) / 50;
         hexpy = hexpy + mulZ * ((double)rand() / (RAND_MAX)) / 50;
@@ -149,7 +149,7 @@ void timerCallBack() {
     }
 
     ++timer;
-    if (index != 1 && index != 2 && index != 3)
+    if (index1 != 1 && index1 != 2 && index1 != 3)
     {
         if (timer >= 20)
         {
@@ -159,7 +159,7 @@ void timerCallBack() {
             timer = 1;
         }
     }
-    usleep(1000000); // 1 second expressed in microseconds
+    usleep(10000); // 1 second expressed in microseconds -> 1000000
 
     //Update background
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
@@ -170,7 +170,6 @@ void timerCallBack() {
     if (red > 1) red -= 1;
     if (green >= 1) green -= 1;
     if (blue >= 1) blue -= 1;
-    //cout << red << " " << green << " " << blue << "\n";
     glClearColor(red, green, blue, 0);
     
     glutPostRedisplay();
@@ -374,7 +373,7 @@ void mySpecialFunc(int key, int x, int y)
     //Triggers only when object is selected and arrow keys are pressed
     //Translation , Rotation and Scaling should happen
 
-    if (index == 1)
+    if (index1 == 1)
     {
         //Sq pyramid
         if (key == GLUT_KEY_RIGHT)
@@ -394,7 +393,7 @@ void mySpecialFunc(int key, int x, int y)
             pyry += mulY*0.1;
         }
     }
-    else if (index == 2)
+    else if (index1 == 2)
     {
         if (key == GLUT_KEY_RIGHT)
         {
@@ -413,7 +412,7 @@ void mySpecialFunc(int key, int x, int y)
             sphy += mulX * 0.1;
         }
     }
-    else if(index==3){
+    else if(index1==3){
         if (key == GLUT_KEY_RIGHT)
         {
             hexpx += mulZ * 0.1;
@@ -439,7 +438,7 @@ void mySpecialFunc(int key, int x, int y)
 
 void myKeyboardFunc(unsigned char key, int x, int y)
 {
-    if (index == 1)
+    if (index1 == 1)
     {
         //Z for zoom in and X for zoom out
         if (key == 'z')
@@ -460,7 +459,7 @@ void myKeyboardFunc(unsigned char key, int x, int y)
         }
 
     }
-    else if(index == 2)
+    else if(index1 == 2)
     {
         if (key == 'z')
         {
@@ -479,7 +478,7 @@ void myKeyboardFunc(unsigned char key, int x, int y)
             sphrot += 10;
         }
     }
-    else if(index==3){
+    else if(index1==3){
         if (key == 'z')
         {
             hexpscale += 0.1;
@@ -532,9 +531,9 @@ void myMouseFunction(int button, int state, int x, int y)
         //Using stencil buffer part
         float window_width = glutGet(GLUT_WINDOW_WIDTH);
         float window_height = glutGet(GLUT_WINDOW_HEIGHT);
-        glReadPixels(x, window_height - y - 1, 1, 1, GL_STENCIL_INDEX, GL_UNSIGNED_INT, &index);
+        glReadPixels(x, window_height - y - 1, 1, 1, GL_STENCIL_BITS, GL_UNSIGNED_INT, &index1);
         //cout << "Clicked on Index :" << " " << index << "\n";
-        if (index == 0) {
+        if (index1 == 0) {
             glutSpecialFunc(NULL);
             glutKeyboardFunc(NULL);
         }
@@ -583,7 +582,6 @@ void display() {
     glStencilFunc(GL_ALWAYS, 3, -1);
     hexagonalPrism();
     glPopMatrix();
-
     
     glFlush();
 }
