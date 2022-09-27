@@ -2,8 +2,7 @@ Commit message
 
 Completed :
 
-- Combining .obj to OpenGL conversion code and motion code
-- Scaling and other debugs
+- .gitignore modified
 
 Pending :
 
