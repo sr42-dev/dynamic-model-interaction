@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <unistd.h>
 #include <GL/glut.h>
 #include <bits/stdc++.h>
 
@@ -160,9 +159,7 @@ void timerCallBack() {
             timer = 1;
         }
     }
-    delay(500);
-
-
+    usleep(1000000); // 1 second expressed in microseconds
 
     //Update background
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
