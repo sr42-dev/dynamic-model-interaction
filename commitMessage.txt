@@ -1,0 +1,15 @@
+Commit message
+
+Completed :
+
+- Combining .obj to OpenGL conversion code and motion code
+- Scaling and other debugs
+
+Pending :
+
+- Color each triangle in each model randomly
+- Object selectability
+- Object motion control when selected
+- Object transformations when selected
+- Object deselection and continuance of random motion
+
