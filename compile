@@ -1,0 +1,1 @@
+g++ source.cpp -lglut -lGL -lGLU -lGLEW
