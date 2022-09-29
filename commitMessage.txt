@@ -2,11 +2,10 @@ Commit message
 
 Completed :
 
-- .gitignore modified
+- Random object coloring implemented
 
 Pending :
 
-- Color each triangle in each model randomly
 - Object selectability
 - Object motion control when selected
 - Object transformations when selected

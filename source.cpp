@@ -307,6 +307,7 @@ class Model {
         list = glGenLists(1);
         glNewList(list, GL_COMPILE);
         for (Face &face : faces) {
+            glColor3ub( rand()%255, rand()%255, rand()%255 );
             if (face.edge == -1) {
                 has_texcoord = false;
                 glLightfv(GL_LIGHT0, GL_AMBIENT, materials[face.normal].ambient);
@@ -522,7 +523,7 @@ void timerCallBack() {
         sphx = sphx + mulX * ((double)rand() / (RAND_MAX)) / 50;
         sphy = sphy + mulX * ((double)rand() / (RAND_MAX)) / 50;
         sphz = sphz + mulX * ((double)rand() / (RAND_MAX)) / 50;
-        sphrot += ((double)rand() / (RAND_MAX))*3;
+        sphrot += ((double)rand() / (RAND_MAX)) * 3;
     }
 
     if (index1 != 1)
@@ -559,9 +560,10 @@ void timerCallBack() {
     {
         if (timer >= 20)
         {
-            hexaprot += 30;
-            pyrrot += 45;
-            sphrot += 60;
+            // uncomment rotation updation to eliminate total randomness
+            //hexaprot += 10;
+            //pyrrot += 10;
+            //sphrot += 10;
             timer = 1;
         }
     }
