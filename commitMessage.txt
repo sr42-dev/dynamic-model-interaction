@@ -3,6 +3,7 @@ Commit message
 Completed :
 
 - Random object coloring implemented
+- Bounding sphere implemented
 
 Pending :
 

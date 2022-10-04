@@ -816,7 +816,6 @@ void myMouseFunction(int button, int state, int x, int y)
     }
 }
 
-
 void display() {
     glClearStencil(0); // this is the default value
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT| GL_STENCIL_BUFFER_BIT);
@@ -855,6 +854,11 @@ void display() {
     glStencilFunc(GL_ALWAYS, 3, -1);
     model3.draw();
     glPopMatrix();
+
+    glPushMatrix();
+	glColor3f(1, 1, 1);
+	glutWireSphere(4, 20, 20);
+	glPopMatrix();
     
     glFlush();
 }
@@ -884,9 +888,9 @@ int main(int argc, char** argv) {
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    // gluOrtho2D(0, 640, 0, 640);
+    //gluOrtho2D(0, 640, 0, 640);
     //glOrtho(-3, 3, -3, 3, -3, 4);
-    //    glPointSize(10);
+    //glPointSize(10);
     //gluPerspective(40, 1, -25, 1000);
     gluPerspective(50, 1, 0.5, 1000);
 
