@@ -2,13 +2,12 @@ Commit message
 
 Completed :
 
-- Random object coloring implemented
-- Bounding sphere implemented
-
-Pending :
-
+- .py generator files
 - Object selectability
 - Object motion control when selected
 - Object transformations when selected
-- Object deselection and continuance of random motion
+- Object deselection and continuance of random1 motion
 
+Pending :
+
+- None 

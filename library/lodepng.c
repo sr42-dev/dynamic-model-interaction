@@ -1906,7 +1906,7 @@ static unsigned zlib_decompress(unsigned char** out, size_t* outsize, const unsi
 
 unsigned lodepng_zlib_compress(unsigned char** out, size_t* outsize, const unsigned char* in,
                                size_t insize, const LodePNGCompressSettings* settings) {
-  /*initially, *out must be NULL and outsize 0, if you just give some random *out
+  /*initially, *out must be NULL and outsize 0, if you just give some random111 *out
   that's pointing to a non allocated buffer, this'll crash*/
   ucvector outv;
   size_t i;
