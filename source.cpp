@@ -440,7 +440,8 @@ float hexaprot = 0;
 #define Z .850650808352039932
 
 // handling the dynamic background
-float red = 1, green = 1, blue = 1;
+//float red = 1, green = 1, blue = 1;
+float red = 0, green = 0, blue = 0;
 
 // handling robotic rotations
 long timer = 0;
@@ -571,9 +572,9 @@ void timerCallBack() {
 
     // update background
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
-    red += ((double)rand() / (RAND_MAX))/500;
-    green += ((double)rand() / (RAND_MAX))/500;
-    blue += ((double)rand() / (RAND_MAX))/500;
+    // red += ((double)rand() / (RAND_MAX))/500;
+    // green += ((double)rand() / (RAND_MAX))/500;
+    // blue += ((double)rand() / (RAND_MAX))/500;
 
     if (red > 1) red -= 1;
     if (green >= 1) green -= 1;
@@ -777,7 +778,6 @@ void myMouseMotion(int x, int y)
     curr_mx = x;
     curr_my = y;
 
-
     float eyeZ = radius * cos(rad_theta) * cos(rad_phi);
     float eyeX = radius * sin(rad_theta) * cos(rad_phi);
     float eyeY = radius * sin(rad_phi);
@@ -802,8 +802,8 @@ void myMouseFunction(int button, int state, int x, int y)
         // using stencil buffer part
         float window_width = glutGet(GLUT_WINDOW_WIDTH);
         float window_height = glutGet(GLUT_WINDOW_HEIGHT);
-        glReadPixels(x, window_height - y - 1, 1, 1, GL_STENCIL_BITS, GL_UNSIGNED_INT, &index1);
-        //cout << "Clicked on Index :" << " " << index << "\n";
+        glReadPixels(x, window_height - y - 1, window_width, window_height, GL_STENCIL_BITS, GL_UNSIGNED_INT, &index1);
+        cout << "Index :" << " " << index1 << "\n";
         if (index1 == 0) {
             glutSpecialFunc(NULL);
             glutKeyboardFunc(NULL);
